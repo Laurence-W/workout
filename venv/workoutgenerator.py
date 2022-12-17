@@ -13,7 +13,6 @@ mode = 0
 sets = 0
 
 def day_upper():
-    print("Upper  Body Workout")
     print(f"Biceps: {choice(ex['biceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
     print(f"Triceps: {choice(ex['triceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
     print(f"Back Horizontal: {choice(ex['backhorizontal'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
