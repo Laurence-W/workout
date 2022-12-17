@@ -1,6 +1,7 @@
 import pandas as pd
 import pprint
 import csv
+import shutil
 
 def showexerciselist():
     ex = pd.read_csv('/home/laurence/test/exercises.csv',  header=None).groupby([0])[1].agg(list).to_dict()
@@ -23,8 +24,15 @@ def removeexercise():
         writer = csv.writer(writeFile)
         writer.writerows(lines)
 
-    print(f"Your new exercise lise is:")
+    print(f"Your new exercise list is:")
 
     ex = pd.read_csv('/home/laurence/test/exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     pprint.pprint(ex)
-removeexercise()
+#removeexercise()
+
+def reset_exercises():
+    original = r'/home/laurence/test/exercises.csv'
+    target = r'/home/laurence/test/exercises_edited.csv'
+
+    shutil.copyfile(original, target)
+reset_exercises()

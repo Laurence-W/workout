@@ -11,43 +11,6 @@ reps = [5,8,10,12,15,20]
 days = 0
 mode = 0
 sets = 0
-#while days not in range(3,7):
-while not 3 <= days <= 6:
-    days = int(input("How many days would you like to train this week?\n\
-    3  = Push, Pull, Legs\n\
-    4  = Upper, Lower, Upper, Lower\n\
-    5  = Upper, Lower, Push, Pull, Legs\n\
-    6  = Push, Pull, Legs, Push, Pull, Legs\n\
-    Your choice:"
-    ))
-    if not 3 <= days <= 6:
-        print("That is not a valid range. Please input an integer eg. 5")
-print(f"You have chosen to train {days} times this week")
-
-while not 1 <= mode <= 3:
-    mode = int(input("What difficulty level would you like for this week?\n\
-    1  = Easy\n\
-    2  = Medium\n\
-    3  = Hard\n\
-    Your choice? "))
-
-    if mode == 1:
-        print("Easy Mode Activated.")
-        sets = 2
-        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
-
-    elif mode == 2:
-        print("Medium Mode Activated.")
-        sets = 3
-        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
-
-    elif mode == 3:
-        print("Hard Mode? Let's go!")
-        sets = 4
-        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
-
-    else:
-        print("That is not a valid range. Please input an integer eg. 2 for Medium")
 
 def day_upper():
     print("Upper  Body Workout")
@@ -84,6 +47,45 @@ def day_pull():
     print(f"Back Vertical: {choice(ex['backvertical'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
     print(f"Biceps: {choice(ex['biceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
     print(f"Shoulders Rear: {choice(ex['reardelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
+
+
+#ensure days worked out that week is valid
+while not 3 <= days <= 6:
+    days = int(input("How many days would you like to train this week?\n\
+    3  = Push, Pull, Legs\n\
+    4  = Upper, Lower, Upper, Lower\n\
+    5  = Upper, Lower, Push, Pull, Legs\n\
+    6  = Push, Pull, Legs, Push, Pull, Legs\n\
+    Your choice:"
+    ))
+    if not 3 <= days <= 6:
+        print("That is not a valid range. Please input an integer eg. 5")
+print(f"You have chosen to train {days} times this week")
+
+while not 1 <= mode <= 3:
+    mode = int(input("What difficulty level would you like for this week?\n\
+    1  = Easy\n\
+    2  = Medium\n\
+    3  = Hard\n\
+    Your choice? "))
+
+    if mode == 1:
+        print("Easy Mode Activated.")
+        sets = 2
+        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
+
+    elif mode == 2:
+        print("Medium Mode Activated.")
+        sets = 3
+        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
+
+    elif mode == 3:
+        print("Hard Mode? Let's go!")
+        sets = 4
+        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
+
+    else:
+        print("That is not a valid range. Please input an integer eg. 2 for Medium")
 
 if days == 3:
     print("Day 1 Push:")
