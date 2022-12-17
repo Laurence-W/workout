@@ -11,40 +11,26 @@ days = 0
 mode = 0
 sets = 0
 
+upper_elements = ['Biceps', 'Triceps','Backhorizontal', 'Backtraps', 'Backvertical', 'Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Reardelts']
+lower_elements = ['Legsquads', 'Legshams', 'Legsglutes', 'Legscalves', 'Abdominals']
+push_elements = ['Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Triceps']
+pull_elements = ['Backhorizontal', 'Backtraps', 'Backvertical', 'Biceps', 'Reardelts']
+
 def day_upper():
-    print(f"Biceps: {choice(ex['biceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Triceps: {choice(ex['triceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Back Horizontal: {choice(ex['backhorizontal'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Back traps: {choice(ex['backtraps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Back Vertical: {choice(ex['backvertical'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Chest: {choice(ex['chest'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Chest Fly: {choice(ex['chestfly'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders Front: {choice(ex['frontdelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders Rear: {choice(ex['reardelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders: {choice(ex['shoulders'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders Sides: {choice(ex['sidedelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
+    for i in upper_elements:
+        print(f"{i}: {choice(ex[i],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
 
 def day_lower():
-    print(f"Legs Quads: {choice(ex['legsquads'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Legs Hams: {choice(ex['legshams'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Legs Glutes: {choice(ex['legsglutes'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Legs Calves: {choice(ex['legscalves'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Abdominals: {choice(ex['abdominals'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
+    for i in lower_elements:
+        print(f"{i}: {choice(ex[i],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
 
 def day_push():
-    print(f"Chest: {choice(ex['chest'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Chest Fly: {choice(ex['chestfly'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders Front: {choice(ex['frontdelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"shoulders: {choice(ex['shoulders'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders Side: {choice(ex['sidedelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Triceps: {choice(ex['triceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
+    for i in push_elements:
+        print(f"{i}: {choice(ex[i],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
 
 def day_pull():
-    print(f"Back Horizontal: {choice(ex['backhorizontal'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Back Traps: {choice(ex['backtraps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Back Vertical: {choice(ex['backvertical'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Biceps: {choice(ex['biceps'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
-    print(f"Shoulders Rear: {choice(ex['reardelts'],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
+    for i in pull_elements:
+        print(f"{i}: {choice(ex[i],1,replace=False)} {sets} x {choice(reps,1,replace=False)}")
 
 
 #ensure days worked out that week is valid

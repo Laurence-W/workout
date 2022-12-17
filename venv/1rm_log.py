@@ -19,7 +19,7 @@ def input_1rms():
 input_1rms()
 
 def show_1rms():
-    n = int(input("How many recent 1rms would you like to see?"))
+    n = int(input("How many recent one-rep maxes would you like to see?"))
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     df['Date'] = df['Date'].astype('datetime64[ns]')
     print(df.tail(n))
