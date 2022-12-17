@@ -32,4 +32,3 @@ def show_1rms():
     df['Date'] = df['Date'].astype('datetime64[ns]')
     print(df.tail(n))
 show_1rms()
-
