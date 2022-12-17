@@ -30,7 +30,6 @@ def show_1rms():
     #df = pd.read_csv('onerms.csv')
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     df['Date'] = df['Date'].astype('datetime64[ns]')
-    print(df)
-    #print(df.tail(n))
+    print(df.tail(n))
 show_1rms()
 
