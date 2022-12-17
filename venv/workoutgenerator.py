@@ -6,7 +6,7 @@ import csv
 from numpy.random import choice
 #test
 #if __name__ == "__main__":
-ex = pd.read_csv('/home/laurence/test/exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
+ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
 reps = [5,8,10,12,15,20]
 days = 0
 mode = 0
