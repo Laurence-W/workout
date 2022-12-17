@@ -4,8 +4,7 @@ import numpy as np
 import pprint
 import csv
 from numpy.random import choice
-#test
-#if __name__ == "__main__":
+
 ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
 reps = [5,8,10,12,15,20]
 days = 0
@@ -71,17 +70,14 @@ while not 1 <= mode <= 3:
     if mode == 1:
         print("Easy Mode Activated.")
         sets = 2
-        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
 
     elif mode == 2:
         print("Medium Mode Activated.")
         sets = 3
-        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
 
     elif mode == 3:
         print("Hard Mode? Let's go!")
         sets = 4
-        #eg.start_workout(type_of_workout, intensity, number_of_exercises, workout_interval)
 
     else:
         print("That is not a valid range. Please input an integer eg. 2 for Medium")

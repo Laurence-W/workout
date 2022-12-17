@@ -6,8 +6,6 @@ import shutil
 def showexerciselist():
     ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     pprint.pprint(ex)
-    #for x,y in (line.rstrip().split(',') for line in f):
-        #exercises.setdefault(y, []).append(x)
 showexerciselist()
 
 def removeexercise():
