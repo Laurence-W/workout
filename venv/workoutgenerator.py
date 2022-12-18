@@ -7,14 +7,15 @@ import math
 import shutil
 
 def generate_workout():
+#define variables needed for workout generation and read exercise list from csv to dict.
+    ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     upper_elements = ['Biceps', 'Triceps','Backhorizontal', 'Backtraps', 'Backvertical', 'Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Reardelts']
     lower_elements = ['Legsquads', 'Legshams', 'Legsglutes', 'Legscalves', 'Abdominals']
     push_elements = ['Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Triceps']
     pull_elements = ['Backhorizontal', 'Backtraps', 'Backvertical', 'Biceps', 'Reardelts']
     reps = [5,8,10,12,15,20]
-    days = 0
-    mode = 0
-    #ensure days worked out that week is valid
+
+#ensure days worked out is input validly as integer.
     while True:
         try:
             days = int(input("How many days would you like to train this week?\n\
@@ -33,6 +34,7 @@ def generate_workout():
             else:
                 print("Number out of range. Enter a number from 3 to 6)")
 
+#ensure difficulty mode is input validly as integer.
     while True:
         try:
             mode = int(input("What difficulty level would you like for this week?\n\
@@ -63,60 +65,24 @@ def generate_workout():
             else:
                 print("Number out of range. Enter a number from 1 to 3.")
 
-        '''elif mode == 2:
-            print("Medium Mode Activated.")
-            sets = 3
-            break
-
-        elif mode == 3:
-            print("Hard Mode? Let's go!")
-            sets = 4
-            break
-
-        else:
-            print("That is not a valid range. Please input an integer eg. 2 for Medium")
-
-    while not 1 <= mode <= 3:
-        mode = int(input("What difficulty level would you like for this week?\n\
-        1  = Easy\n\
-        2  = Medium\n\
-        3  = Hard\n\
-        Your choice? "))
-
-        if mode == 1:
-            print("Easy Mode Activated.")
-            sets = 2
-
-        elif mode == 2:
-            print("Medium Mode Activated.")
-            sets = 3
-
-        elif mode == 3:
-            print("Hard Mode? Let's go!")
-            sets = 4
-
-        else:
-            print("That is not a valid range. Please input an integer eg. 2 for Medium")'''
-
+#define sub-functions to generate exercises for each category of day. eg push, pull, etc.
     def day_upper():
-        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in upper_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_lower():
-        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in lower_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_push():
-        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in push_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_pull():
-        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in pull_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
+
+#run sub-functions based on days input by user.
     if days == 3:
         print("\n Day 1 Push:")
         day_push()
@@ -223,25 +189,37 @@ def show_exercise_list():
     pprint.pprint(ex)
 
 def remove_exercise():
+    df = pd.read_csv("exercises_edited.csv", usecols = ['Exercise'])
+    exercise_list = df['Exercise'].tolist()
+    pprint.pprint(exercise_list, width=100, compact=True)
+    print("Here is the list of exercises you can remove, please type one exactly as displayed below, or type cancel to go back to menu")
     lines = list()
-    removed_exercise= input("Which exercise to remove?")
-    with open('exercises.csv', 'r') as readFile:
-        reader = csv.reader(readFile)
-        for row in reader:
-            lines.append(row)
-            for field in row:
-                if field == removed_exercise:
-                    lines.remove(row)
-    with open('exercises_edited.csv', 'w') as writeFile:
-        writer = csv.writer(writeFile)
-        writer.writerows(lines)
+    try:
+        removed_exercise= str(input("Which exercise to remove?"))
+    except ValueError:
+        print('Invalid Please type an exercise as above eg. Crunch, or type cancel')
+    else:
+        if removed_exercise in exercise_list:
+            with open('exercises_edited.csv', 'r') as readFile:
+                reader = csv.reader(readFile)
+                for row in reader:
+                    lines.append(row)
+                    for field in row:
+                        if field == removed_exercise:
+                            lines.remove(row)
+            with open('exercises_edited.csv', 'w') as writeFile:
+                writer = csv.writer(writeFile)
+                writer.writerows(lines)
 
-    print(f"Your new exercise list is:")
-
-    ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
-    pprint.pprint(ex)
+            print(f"You have removed {removed_exercise}.")
+        elif removed_exercise == "cancel":
+            pass
+        else:
+            print('Please type an exercise as displayed in the list, or type cancel')
+            remove_exercise()
 
 def reset_exercises():
+    #function copies original exercise list over the edited version using shutil copyfile function.
     original = r'exercises.csv'
     target = r'exercises_edited.csv'
 
