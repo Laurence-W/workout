@@ -319,6 +319,10 @@ def main_menu():
             exit()
         return menu_choice
 
-menu_choice = main_menu()
-while menu_choice != 8:
+def start_app():
     menu_choice = main_menu()
+    while menu_choice != 8:
+        menu_choice = main_menu()
+
+if __name__ == "__main__":
+    start_app()
