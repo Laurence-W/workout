@@ -178,7 +178,7 @@ def show_1rms():
                 print("Number out of range. Enter a number from 1 to 20)")
 
 def calculate_ipf_points():
-    df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
+    df = pd.read_csv("onerms_test.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     totalscore = df.iloc[-1].tolist()
     #accept bodyweight input as float number type only.
     try:
@@ -193,7 +193,7 @@ def calculate_ipf_points():
             C = 53.216
             D = 147.0835
             result=(sum(totalscore[1:4]))
-            ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
+            ipf_points = round(500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D)), 2)
             print(f"The IPF points score for a {bodyweight}kg male with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
             break
         elif gender.lower() == "female":
@@ -202,7 +202,7 @@ def calculate_ipf_points():
             C = 34.5246
             D = 86.8301
             result=(sum(totalscore[1:4]))
-            ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
+            ipf_points = round(500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D)), 2)
             print(f"The IPF points score for a {bodyweight}kg female with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
             break
         else:
