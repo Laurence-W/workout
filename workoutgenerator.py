@@ -223,7 +223,8 @@ def remove_exercise():
     df = pd.read_csv("exercises_edited.csv", usecols = ['Exercise'])
     exercise_list = df['Exercise'].tolist()
     pprint.pprint(exercise_list, width=100, compact=True)
-    print("Here is the list of exercises you can remove, please type one exactly as displayed below, or type cancel to go back to menu")
+    print("Here is the list of exercises you can remove,please type\n\
+ one exactly as displayed below, or type cancel to go back to menu")
     lines = list()
     #get input of which exercise to remove and remove from csv
     try:
@@ -247,7 +248,8 @@ def remove_exercise():
         elif removed_exercise == "cancel":
             pass
         else:
-            print('Exercise does not exist in list. Please type an exercise as displayed in the list, or type cancel')
+            print('Exercise does not exist in list. Please type an exercise\n\
+ as displayed in the list, or type cancel')
             remove_exercise()
 
 def reset_exercises():
