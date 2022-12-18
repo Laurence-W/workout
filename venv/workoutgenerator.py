@@ -11,7 +11,6 @@ def generate_workout():
     lower_elements = ['Legsquads', 'Legshams', 'Legsglutes', 'Legscalves', 'Abdominals']
     push_elements = ['Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Triceps']
     pull_elements = ['Backhorizontal', 'Backtraps', 'Backvertical', 'Biceps', 'Reardelts']
-    #ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     reps = [5,8,10,12,15,20]
     days = 0
     mode = 0
@@ -109,7 +108,6 @@ def generate_workout():
         day_pull()
         print("\n Day 6 Lower:")
         day_lower()
-#generate_workout()
 
 def input_1rms():
     squat_1rm = float(input("Please enter your current Squat One-rep Max:"))
@@ -120,15 +118,12 @@ def input_1rms():
     with open("onerms.csv", 'a+', newline='') as write_obj:
         csv_writer = csv.writer(write_obj)
         csv_writer.writerow(current1rms)
-    #return current1rms
-#input_1rms()
 
 def show_1rms():
     n = int(input("How many recent one-rep maxes would you like to see?"))
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     df['Date'] = df['Date'].astype('datetime64[ns]')
     print(df.tail(n))
-#show_1rms()
 
 def calculate_ipf_points():
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
@@ -153,12 +148,10 @@ def calculate_ipf_points():
         print(result)
         ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
         print(ipf_points)
-#calculate_ipf_points()
 
 def show_exercise_list():
     ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     pprint.pprint(ex)
-#show_exercise_list()
 
 def remove_exercise():
     lines = list()
@@ -178,7 +171,6 @@ def remove_exercise():
 
     ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     pprint.pprint(ex)
-#remove_exercise()
 
 def reset_exercises():
     original = r'exercises.csv'
@@ -186,7 +178,6 @@ def reset_exercises():
 
     shutil.copyfile(original, target)
     print("Exercise List has been reset to original state.")
-#reset_exercises()
 
 def main_menu():
     while True:
