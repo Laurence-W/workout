@@ -35,5 +35,10 @@ Dependencies include Numpy, Python, csv, and some inbuilt python 3 libraries.
 ## Repository for source code:
 [repository](https://github.com/Laurence-W/workout)
 
+## Trello
+[Trello](https://trello.com/b/NsNk2rUZ/workout)
+
+## Presentation
+[Vimeo](https://vimeo.com/782510943/1ebded20eb)
 
 .
