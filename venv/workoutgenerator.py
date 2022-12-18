@@ -126,10 +126,40 @@ def generate_workout():
         day_lower()
 
 def input_1rms():
-    squat_1rm = float(input("Please enter your current Squat One-rep Max:"))
-    bench_1rm = float(input("Please enter your current Bench Press One-rep Max:"))
-    deadlift_1rm = float(input("Please enter your current Deadlift One-rep Max:"))
-    current1rms = [date.today(), squat_1rm, bench_1rm, deadlift_1rm]
+    while True:
+        try:
+            squat_1rm = float(input("Please enter your current Squat One-rep Max in kilograms:"))
+        except ValueError:
+            print("Invalid input. Please enter a number eg. 147.25")
+        else:
+            if 1 <= squat_1rm <= 1000:
+                break
+            else:
+                print("Number out of range. Enter a number from 1 to 1000)")
+
+    while True:
+        try:
+            bench_1rm = float(input("Please enter your current Bench One-rep Max in kilograms:"))
+        except ValueError:
+            print("Invalid input. Please enter a number eg. 147.25")
+        else:
+            if 1 <= bench_1rm <= 1000:
+                break
+            else:
+                print("Number out of range. Enter a number from 1 to 1000)")
+
+    while True:
+        try:
+            deadlift_1rm = float(input("Please enter your current Deadlift One-rep Max in kilograms:"))
+        except ValueError:
+            print("Invalid input. Please enter a number eg. 147.25")
+        else:
+            if 1 <= deadlift_1rm <= 1000:
+                break
+            else:
+                print("Number out of range. Enter a number from 1 to 1000)")
+
+    current1rms = [date.today().strftime('%Y-%m-%d'), squat_1rm, bench_1rm, deadlift_1rm]
     print(f"New one-rep max entry: {current1rms}")
     with open("onerms.csv", 'a+', newline='') as write_obj:
         csv_writer = csv.writer(write_obj)
