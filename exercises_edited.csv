@@ -1,53 +1,53 @@
 Body Part,Exercise
-Abdominals,Hanging Leg Raise
-Abdominals,Cable Crunch
-Abdominals,Sit-up
-Abdominals,Crunch
-Backhorizontal,Barbell Row
-Backhorizontal,Cable Row
-Backhorizontal,Dumbbell Row
-Backhorizontal,Chest Supported Row/Humble Row
-Backtraps,Deadlift
-Backtraps,Shrug
-Backtraps,Face Pull
-Backvertical,Pull Up
-Backvertical,Lat Pulldown
-Backvertical,Mixed Grip Lat Pulldown
-Biceps,EZ Bar Curl
-Biceps,Dumbbell Hammer Curl
-Biceps,Dumbbell Screw
-Biceps,Incline Dumbbell Curl
-Biceps,Bayesian Curl
-Chest,Bench Press
-Chest,Incline Dumbbell Press
-Chest,Flat Dumbbell Press
-Chest,Machine Chest Press
-Chestfly,Standing Chest Fly
-Chestfly,Incline Chest Fly
-Chestfly,PecDec
-Frontdelts,Front Raise
-Frontdelts,Upright Row
-Legscalves,Machine Calf
-Legscalves,Standing Calf
-Legscalves,Seated Calf
-Legsglutes,Hip Thrust
-Legsglutes,Kettlebell Swing
-Legsglutes,Machine Hip Ab/Adduction
-Legshams,Leg Curl
-Legshams,Nordic Curl
-Legshams,Stiff-leg Deadlift
-Legsquads,Squat
-Legsquads,Leg Press
-Legsquads,Leg Extension
-Legsquads,Dumbbell Stepup
-Legsquads,Dumbbell Lunge
-Reardelts,RearDelt Dumbbell
-Reardelts,RearDelt Machine
-Shoulders,Dumbbell OHP
-Shoulders,Barbell OHP
-Sidedelts,Cable Lat Raise
-Sidedelts,Dumbbell Lat Raise
-Triceps,Tricep Pushdown
-Triceps,EZBar Skullcrusher
-Triceps,Dip
-Triceps,Overhead Tricep Extension
+abdominals,Hanging Leg Raise
+abdominals,Cable Crunch
+abdominals,Sit-up
+abdominals,Crunch
+backhorizontal,Barbell Row
+backhorizontal,Cable Row
+backhorizontal,Dumbbell Row
+backhorizontal,Chest Supported Row/Humble Row
+backtraps,Deadlift
+backtraps,Shrug
+backtraps,Face Pull
+backvertical,Pull Up
+backvertical,Lat Pulldown
+backvertical,Mixed Grip Lat Pulldown
+biceps,EZ Bar Curl
+biceps,Dumbbell Hammer Curl
+biceps,Dumbbell Screw
+biceps,Incline Dumbbell Curl
+biceps,Bayesian Curl
+chest,Bench Press
+chest,Incline Dumbbell Press
+chest,Flat Dumbbell Press
+chest,Machine Chest Press
+chestfly,Standing Chest Fly
+chestfly,Incline Chest Fly
+chestfly,PecDec
+frontdelts,Front Raise
+frontdelts,Upright Row
+legscalves,Machine Calf
+legscalves,Standing Calf
+legscalves,Seated Calf
+legsglutes,Hip Thrust
+legsglutes,Kettlebell Swing
+legsglutes,Machine Hip Ab/Adduction
+legshams,Leg Curl
+legshams,Nordic Curl
+legshams,Stiff-leg Deadlift
+legsquads,Squat
+legsquads,Leg Press
+legsquads,Leg Extension
+legsquads,Dumbbell Stepup
+legsquads,Dumbbell Lunge
+reardelts,RearDelt Dumbbell
+reardelts,RearDelt Machine
+shoulders,Dumbbell OHP
+shoulders,Barbell OHP
+sidedelts,Cable Lat Raise
+sidedelts,Dumbbell Lat Raise
+triceps,Tricep Pushdown
+triceps,EZBar Skullcrusher
+triceps,Dip
+triceps,Overhead Tricep Extension
