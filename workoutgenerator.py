@@ -38,10 +38,10 @@ def generate_workout():
     while True:
         try:
             mode = int(input("What difficulty level would you like for this week?\n\
-                            1  = Easy\n\
-                            2  = Medium\n\
-                            3  = Hard\n\
-                            Your choice? "))
+        1  = Easy\n\
+        2  = Medium\n\
+        3  = Hard\n\
+        Your choice? "))
         except ValueError:
             print("Invalid input. Please enter a number only eg. 2")
         else:
