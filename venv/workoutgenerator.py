@@ -182,3 +182,4 @@ def reset_exercises():
     shutil.copyfile(original, target)
     print("Exercise List has been reset to original state.")
 #reset_exercises()
+
