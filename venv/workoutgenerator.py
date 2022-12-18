@@ -15,17 +15,66 @@ def generate_workout():
     days = 0
     mode = 0
     #ensure days worked out that week is valid
-    while not 3 <= days <= 6:
-        days = int(input("How many days would you like to train this week?\n\
+    while True:
+        try:
+            days = int(input("How many days would you like to train this week?\n\
         3  = Push, Pull, Legs\n\
         4  = Upper, Lower, Upper, Lower\n\
         5  = Upper, Lower, Push, Pull, Legs\n\
         6  = Push, Pull, Legs, Push, Pull, Legs\n\
         Your choice:"
         ))
-        if not 3 <= days <= 6:
-            print("That is not a valid range. Please input an integer eg. 5")
-    print(f"You have chosen to train {days} times this week")
+        except ValueError:
+            print("Invalid input. Please enter the number of days only eg. 4")
+        else:
+            if 3 <= days <= 6:
+                print(f"You have chosen to train {days} times this week")
+                break
+            else:
+                print("Number out of range. Enter a number from 3 to 6)")
+
+    while True:
+        try:
+            mode = int(input("What difficulty level would you like for this week?\n\
+                            1  = Easy\n\
+                            2  = Medium\n\
+                            3  = Hard\n\
+                            Your choice? "))
+
+        except ValueError:
+            print("Invalid input. Please enter a number only eg. 2")
+        else:
+            if mode == 1:
+                print("Easy Mode Activated.")
+                sets = 2
+                break
+            elif mode == 2:
+                print("Medium Mode Activated.")
+                sets = 3
+                break
+            elif mode == 2:
+                print("Medium Mode Activated.")
+                sets = 3
+                break
+            elif mode == 3:
+                print("Hard Mode? Let's go!")
+                sets = 4
+                break
+            else:
+                print("Number out of range. Enter a number from 1 to 3.")
+
+        '''elif mode == 2:
+            print("Medium Mode Activated.")
+            sets = 3
+            break
+
+        elif mode == 3:
+            print("Hard Mode? Let's go!")
+            sets = 4
+            break
+
+        else:
+            print("That is not a valid range. Please input an integer eg. 2 for Medium")
 
     while not 1 <= mode <= 3:
         mode = int(input("What difficulty level would you like for this week?\n\
@@ -47,7 +96,7 @@ def generate_workout():
             sets = 4
 
         else:
-            print("That is not a valid range. Please input an integer eg. 2 for Medium")
+            print("That is not a valid range. Please input an integer eg. 2 for Medium")'''
 
     def day_upper():
         ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
