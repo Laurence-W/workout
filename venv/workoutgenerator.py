@@ -66,20 +66,21 @@ def generate_workout():
                 print("Number out of range. Enter a number from 1 to 3.")
 
 #define sub-functions to generate exercises for each category of day. eg push, pull, etc.
+# & ex.keys() ensures that no error occurs if a user has deleted all exercises within a Body Part
     def day_upper():
-        for i in upper_elements:
+        for i in upper_elements & ex.keys():
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_lower():
-        for i in lower_elements:
+        for i in lower_elements & ex.keys():
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_push():
-        for i in push_elements:
+        for i in push_elements & ex.keys():
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_pull():
-        for i in pull_elements:
+        for i in pull_elements & ex.keys():
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
 #run sub-functions based on days input by user.
