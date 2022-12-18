@@ -5,7 +5,6 @@ import pprint
 import csv
 import math
 import shutil
-import sys
 
 def generate_workout():
     upper_elements = ['Biceps', 'Triceps','Backhorizontal', 'Backtraps', 'Backvertical', 'Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Reardelts']
