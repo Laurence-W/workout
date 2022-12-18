@@ -5,13 +5,14 @@ import pprint
 import csv
 import math
 import shutil
+import sys
 
 def generate_workout():
     upper_elements = ['Biceps', 'Triceps','Backhorizontal', 'Backtraps', 'Backvertical', 'Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Reardelts']
     lower_elements = ['Legsquads', 'Legshams', 'Legsglutes', 'Legscalves', 'Abdominals']
     push_elements = ['Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Triceps']
     pull_elements = ['Backhorizontal', 'Backtraps', 'Backvertical', 'Biceps', 'Reardelts']
-    ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
+    #ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     reps = [5,8,10,12,15,20]
     days = 0
     mode = 0
@@ -51,18 +52,22 @@ def generate_workout():
             print("That is not a valid range. Please input an integer eg. 2 for Medium")
 
     def day_upper():
+        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in upper_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_lower():
+        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in lower_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_push():
+        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in push_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
     def day_pull():
+        ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
         for i in pull_elements:
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
     if days == 3:
@@ -112,10 +117,11 @@ def input_1rms():
     bench_1rm = float(input("Please enter your current Bench Press One-rep Max:"))
     deadlift_1rm = float(input("Please enter your current Deadlift One-rep Max:"))
     current1rms = [date.today(), squat_1rm, bench_1rm, deadlift_1rm]
+    print(f"New one-rep max entry: {current1rms}")
     with open("onerms.csv", 'a+', newline='') as write_obj:
         csv_writer = csv.writer(write_obj)
         csv_writer.writerow(current1rms)
-    return current1rms
+    #return current1rms
 #input_1rms()
 
 def show_1rms():
@@ -183,3 +189,73 @@ def reset_exercises():
     print("Exercise List has been reset to original state.")
 #reset_exercises()
 
+def main_menu():
+    while True:
+        print("Welcome to the workout app!")
+        print("Please choose what you would like to do:")
+        print("[1] Generate a workout.")
+        print("[2] Input my current one-rep max for Squat, Bench, and Deadlift.")
+        print("[3] See some of my recent one-rep max entries.")
+        print("[4] Calculate my IPF score (Powerlifting Benchmark).")
+        print("[5] See the current exercise choices used for workouts.")
+        print("[6] Remove an exercise I don't want.")
+        print("[7] Reset the exercise list to original state.")
+        print("[8] Quit the app.")
+
+        try:
+            menu_choice = int(input("Enter a value from 1 to 8."))
+        except ValueError:
+           print("Invalid option entry. Enter a value from 1 to 8")
+           continue
+        if not menu_choice in range(1,9):
+            print("Invalid option entry. Enter a value from 1 to 8")
+            continue
+        if menu_choice == 1:
+            generate_workout()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 2:
+            input_1rms()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 3:
+            show_1rms()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 4:
+            calculate_ipf_points()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 5:
+            show_exercise_list()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 6:
+            remove_exercise()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 7:
+            reset_exercises()
+            try:
+                input("Press enter to continue")
+            except SyntaxError:
+                pass
+        if menu_choice == 8:
+            exit()
+        return menu_choice
+
+menu_choice = main_menu()
+while menu_choice != 8:
+    menu_choice = main_menu()
