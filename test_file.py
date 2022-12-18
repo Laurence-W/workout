@@ -1,6 +1,5 @@
 import pandas as pd
 import math
-from datetime import date
 import csv
 import shutil
 

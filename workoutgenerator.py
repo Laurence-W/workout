@@ -7,15 +7,14 @@ import math
 import shutil
 
 def generate_workout():
-#define variables needed for workout generation and read exercise list from csv to dict.
+    #define variables needed for workout generation and read exercise list from csv to dict.
     ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
     upper_elements = ['Biceps', 'Triceps','Backhorizontal', 'Backtraps', 'Backvertical', 'Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Reardelts']
     lower_elements = ['Legsquads', 'Legshams', 'Legsglutes', 'Legscalves', 'Abdominals']
     push_elements = ['Chest', 'Chestfly', 'Shoulders', 'Frontdelts', 'Sidedelts', 'Triceps']
     pull_elements = ['Backhorizontal', 'Backtraps', 'Backvertical', 'Biceps', 'Reardelts']
     reps = [5,8,10,12,15,20]
-
-#ensure days worked out is input validly as integer.
+    #ensure days worked out is input validly as integer.
     while True:
         try:
             days = int(input("How many days would you like to train this week?\n\
@@ -34,7 +33,7 @@ def generate_workout():
             else:
                 print("Number out of range. Enter a number from 3 to 6)")
 
-#ensure difficulty mode is input validly as integer.
+    #ensure difficulty mode is input validly as integer.
     while True:
         try:
             mode = int(input("What difficulty level would you like for this week?\n\
@@ -64,8 +63,8 @@ def generate_workout():
             else:
                 print("Number out of range. Enter a number from 1 to 3.")
 
-#define sub-functions to generate exercises for each category of day. eg push, pull, etc.
-# & ex.keys() ensures that no error occurs if a user has deleted all exercises within a Body Part
+    #define sub-functions to generate exercises for each category of day. eg push, pull, etc.
+    # & ex.keys() ensures that no error occurs if a user has deleted all exercises within a Body Part
     def day_upper():
         for i in upper_elements & ex.keys():
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
@@ -82,7 +81,7 @@ def generate_workout():
         for i in pull_elements & ex.keys():
             print(f"{i}: {np.random.choice(ex[i],1,replace=False)} {sets} x {np.random.choice(reps,1,replace=False)}")
 
-#run sub-functions based on days input by user.
+    #run sub-functions based on days input by user.
     if days == 3:
         print("\n Day 1 Push:")
         day_push()
@@ -125,6 +124,7 @@ def generate_workout():
         day_lower()
 
 def input_1rms():
+    #take user inputs as floats for numbers of kilograms lifted
     while True:
         try:
             squat_1rm = float(input("Please enter your current Squat One-rep Max in kilograms:"))
@@ -156,6 +156,7 @@ def input_1rms():
             else:
                 print("Number out of range. Enter a number from 1 to 1000)")
 
+    #print back entry to user and append to csv log
     current1rms = [date.today().strftime('%Y-%m-%d'), squat_1rm, bench_1rm, deadlift_1rm]
     print(f"New one-rep max entry: {current1rms}")
     with open("onerms.csv", 'a+', newline='') as write_obj:
@@ -163,6 +164,7 @@ def input_1rms():
         csv_writer.writerow(current1rms)
 
 def show_1rms():
+    #read csv log and print back the user the desired past entries
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     while True:
         try:
@@ -178,9 +180,11 @@ def show_1rms():
                 print("Number out of range. Enter a number from 1 to 20)")
 
 def calculate_ipf_points():
+    #get current total for 3 lifts
     df = pd.read_csv("onerms_test.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     totalscore = df.iloc[-1].tolist()
-    #accept bodyweight input as float number type only.
+    #accept bodyweight input as float number type only
+    #accept gender as string
     try:
         bodyweight = float(input("Please enter your bodyweight in kilograms as a number (eg. 92.35)"))
     except ValueError:
@@ -215,11 +219,13 @@ def show_exercise_list():
         print(key, ' : ', ex[key])
 
 def remove_exercise():
+    #read exercise list to user
     df = pd.read_csv("exercises_edited.csv", usecols = ['Exercise'])
     exercise_list = df['Exercise'].tolist()
     pprint.pprint(exercise_list, width=100, compact=True)
     print("Here is the list of exercises you can remove, please type one exactly as displayed below, or type cancel to go back to menu")
     lines = list()
+    #get input of which exercise to remove and remove from csv
     try:
         removed_exercise= str(input("Which exercise to remove?"))
     except ValueError:
@@ -241,7 +247,7 @@ def remove_exercise():
         elif removed_exercise == "cancel":
             pass
         else:
-            print('Please type an exercise as displayed in the list, or type cancel')
+            print('Exercise does not exist in list. Please type an exercise as displayed in the list, or type cancel')
             remove_exercise()
 
 def reset_exercises():
