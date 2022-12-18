@@ -128,25 +128,35 @@ def show_1rms():
 def calculate_ipf_points():
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
     totalscore = df.iloc[-1].tolist()
-    bodyweight = float(input("Please enter your bodyweight in kilograms as a number (eg. 92.35)"))
-    gender = input("Please tell me your gender (Type m or f):")
-    if gender == "m":
-        A = 310.67
-        B = 857.785
-        C = 53.216
-        D = 147.0835
-        result=(sum(totalscore[1:4]))
-        ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
-        print(f"The IPF points score for a {bodyweight}kg male with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
+    #accept bodyweight input as float number type only.
+    try:
+        bodyweight = float(input("Please enter your bodyweight in kilograms as a number (eg. 92.35)"))
+    except ValueError:
+        bodyweight = float(input("Invalid entry. Please enter your bodyweight in kilograms as a number (eg. 92.35)"))
 
-    elif gender == "f":
-        A = 125.1435
-        B = 228.03
-        C = 34.5246
-        D = 86.8301
-        result=(sum(totalscore[1:4]))
-        ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
-        print(f"The IPF points score for a {bodyweight}kg female with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
+    while True:
+        gender = input("Please tell me your gender (Type male or female):")
+        if gender.lower() == "male":
+            A = 310.67
+            B = 857.785
+            C = 53.216
+            D = 147.0835
+            result=(sum(totalscore[1:4]))
+            ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
+            print(f"The IPF points score for a {bodyweight}kg male with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
+            break
+        elif gender.lower() == "female":
+            A = 125.1435
+            B = 228.03
+            C = 34.5246
+            D = 86.8301
+            result=(sum(totalscore[1:4]))
+            ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
+            print(f"The IPF points score for a {bodyweight}kg female with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
+            break
+        else:
+            print("Invalid entry. Please enter gender as male or female.")
+            continue
 
 def show_exercise_list():
     ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
