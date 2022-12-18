@@ -136,18 +136,17 @@ def calculate_ipf_points():
         C = 53.216
         D = 147.0835
         result=(sum(totalscore[1:4]))
-        print(result)
         ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
-        print(ipf_points)
+        print(f"The IPF points score for a {bodyweight}kg male with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
+
     elif gender == "f":
         A = 125.1435
         B = 228.03
         C = 34.5246
         D = 86.8301
         result=(sum(totalscore[1:4]))
-        print(result)
         ipf_points = 500 + 100 * ((result - (A * math.log(bodyweight) - B)) / (C * math.log(bodyweight) - D))
-        print(ipf_points)
+        print(f"The IPF points score for a {bodyweight}kg female with a Squat, Bench, Deadlift total of {result}kg is {round(ipf_points, 3)}.")
 
 def show_exercise_list():
     ex = pd.read_csv('exercises_edited.csv',  header=None).groupby([0])[1].agg(list).to_dict()
