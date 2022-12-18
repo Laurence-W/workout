@@ -120,10 +120,21 @@ def input_1rms():
         csv_writer.writerow(current1rms)
 
 def show_1rms():
-    n = int(input("How many recent one-rep maxes would you like to see?"))
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
-    df['Date'] = df['Date'].astype('datetime64[ns]')
-    print(df.tail(n))
+    while True:
+        try:
+            n = int(input("How many recent one-rep maxes would you like to see? (Enter a number from 1 to 20)"))
+        except ValueError:
+            print("Invalid input. Please enter a number eg. 5")
+        else:
+            if 1 <= n <= 20:
+                df['Date'] = df['Date'].astype('datetime64[ns]')
+                print(df.tail(n))
+                break
+            else:
+                print("Number out of range. Enter a number from 1 to 20)")
+        
+
 
 def calculate_ipf_points():
     df = pd.read_csv("onerms.csv", usecols = ['Date','Squat','Bench','Deadlift'])
